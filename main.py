@@ -1,6 +1,5 @@
 from fastapi import FastAPI, HTTPException  # noqa: I001
 from pydantic import BaseModel
-from typing import Optional
 
 
 app = FastAPI()
@@ -10,7 +9,7 @@ lista_tarefas = []
 class Tarefa(BaseModel):
     nome: str
     descricao: str
-    concluida: Optional[bool] = False  # noqa: UP045
+    concluida: bool | None = False
 
 @app.get("/tarefas")
 def listar_tarefas():
